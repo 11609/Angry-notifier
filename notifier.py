@@ -20,3 +20,6 @@ class Notifier:
         # Wait for threaded notification to finish
         while self.toaster.notification_active(): time.sleep(0.1)
 
+if __name__ == '__main__':
+    notifier = Notifier()
+    notifier.demo()
