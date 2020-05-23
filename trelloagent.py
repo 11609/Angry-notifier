@@ -1,9 +1,9 @@
 import os
 from trello import TrelloClient
 
-
-# os.environ['TRELLO_API_KEY'] = '<this should be prompted for during runtime>'
-# os.environ['TRELLO_API_SECRET'] = '<this should be prompted for during runtime>'
+# those are required for the connection to work
+# os.environ['TRELLO_API_KEY']
+# os.environ['TRELLO_API_SECRET']
 
 
 def set_key(key):
