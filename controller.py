@@ -20,9 +20,9 @@ if __name__ == '__main__':
 
     # tr.print_board(tr.find_board('TODO'))
 
-    task, intensity = tr.task()
+    tasks, intensity = tr.tasks()
 
-    ntf.notify(task=task, intensity=intensity)
+    ntf.notify(tasks=tasks, intensity=intensity)
 
     # s.enter(2, 1, do_something, (s,))
     # s.run()
