@@ -30,10 +30,11 @@ def demo():
 
 
 def find_board(target: str = 'TODO'):
-    print('Scanning. Target board >' + target + '<')
+    pr.nice('Scanning. Target board:\'' + target + '\'')
     todo_board = next((boardname for boardname in client.list_boards() if boardname.name == target), None)
     if todo_board is None:
         pr.err('ERROR: BOARD NOT FOUND')
+    pr.okbl('Scan successful. Board found.')
     return todo_board
 
 
@@ -66,24 +67,54 @@ def connect():
     return client
 
 
-def task():
+def tasks():
+    pr.nice('Looking for tasks')
     todo_board = find_board()
-    # lists = todo_board.all_lists()
     for lst in todo_board.all_lists():
-        # print("---> " + lst.name)
+        pr.bold("-> " + lst.name)
+
+        print('-> contents:')
+        for card in lst.list_cards():
+            print("---> " + card.name)
+        if not lst.list_cards():
+            print("---> <<no cards>>")
+
         if lst.name == 'IMPORTANT & URGENT':
-            pr.okbl('found I&U list...')
+            pr.okbl('identified as I&U list...')
             task_list = lst.list_cards()
             if task_list:
-                return random.choice(task_list), 4
+                task_names = [task.name for task in task_list]
+                return random.sample(task_names, min(3, len(task_list))), 4
             else:
-                pr.err('  I&U is empty')
+                pr.fail('I&U is empty.')
 
+        if lst.name == 'IMPORTANT':
+            pr.okbl('identified as IMPORTANT list...')
+            task_list = lst.list_cards()
+            if task_list:
+                task_names = [task.name for task in task_list]
+                return random.sample(task_names, min(3, len(task_list))), 3
+            else:
+                pr.fail('IMPORTANT is empty.')
 
-        for card in lst.list_cards():
-            print("-----> " + card.name)
-        if not lst.list_cards():
-            print("-----> (no cards)")
+        if lst.name == 'URGENT':
+            pr.okbl('identified as URGENT list...')
+            task_list = lst.list_cards()
+            if task_list:
+                task_names = [task.name for task in task_list]
+                return random.sample(task_names, min(3, len(task_list))), 2
+            else:
+                pr.fail('URGENT is empty.')
+
+        if lst.name == 'UNIMPORTANT & NON-URGENT':
+            pr.okbl('identified as UI&N-U list...')
+            task_list = lst.list_cards()
+            if task_list:
+                task_names = [task.name for task in task_list]
+                return random.sample(task_names, min(3, len(task_list))), 1
+            else:
+                pr.fail('UI&N-U is empty.')
+
     return '', 0
 
 
