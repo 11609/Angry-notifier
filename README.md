@@ -12,6 +12,8 @@ To run, two environment variables must be set:
     
 You can learn about how to obtain those here: https://pypi.org/project/py-trello/
 
+If not set, App will simply prompt you for those :)
+
 ## Trello setup
 
 You need to have a Trello Board named "TODO".
