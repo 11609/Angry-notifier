@@ -19,15 +19,14 @@ class TextGen:
             "How about finally doing something? LV3"
         ],
         [  # lvl 4: >IMPORTANT & URGENT< is not empty (!!!)
-            "OH GOD DO SOMETHING LV4 (!!!)",
-            "PO CO TYLE ZWLEKAŁEŚ ?!\nZARAZ DEADLINE!!!"
+            "Niedługo DEADLINE !!!"
         ]
     ]
 
     prefixesByLv = [
         [  # lvl 0; there is nothing to do...
             'ja wiem że nie ma nic do roboty... \n'
-            'ale nie wstyd Ci tak nic nie robić? :d'
+            'Może przynajmniej angielski powtórzysz?'
         ],
         [  # lvl 1: only >UNIMPORTANT & NON-URGENT< is not empty
             'hej a może by tak '
@@ -40,7 +39,7 @@ class TextGen:
             "PAMIĘTAJ, MUSISZ "
         ],
         [  # lvl 4: >IMPORTANT & URGENT< is not empty (!!!)
-            'SZYBKO!!! MUSISZ '
+            'SZYBKO!!!  '
         ]
     ]
 
@@ -84,12 +83,17 @@ class Notifier:
                                 icon_path="icon.ico")
 
     def notify(self,
-               task: str = "zjeść kebaba",
+               tasks: str = "zjeść kebaba",
                intensity: int = 0):
+        content = TextGen.pick_prefix(intensity)
+        for t in tasks:
+            content += '\n-> ' + t
         pr.okbl('Notification intensity: ' + str(intensity))
         self.toaster.show_toast(TextGen.pick_header(intensity),
-                                TextGen.pick_prefix(intensity) + task,
-                                icon_path="icon.ico")
+                                content,
+                                icon_path="icon.ico",
+                                duration=10,
+                                threaded=True)
 
 
 agent = Notifier()
