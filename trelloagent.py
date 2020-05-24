@@ -30,7 +30,7 @@ def demo():
 
 
 def find_board(target: str = 'TODO'):
-    pr.nice('Scanning. Target board:\'' + target + '\'')
+    pr.nice('Scanning. Target board: \'' + target + '\'')
     todo_board = next((boardname for boardname in client.list_boards() if boardname.name == target), None)
     if todo_board is None:
         pr.err('ERROR: BOARD NOT FOUND')
