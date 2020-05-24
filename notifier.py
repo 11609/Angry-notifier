@@ -1,5 +1,62 @@
 from win10toast import ToastNotifier
 import time
+import print_util as pr
+import random
+
+
+class TextGen:
+    headersByLv = [
+        [  # lvl 0; there is nothing to do...
+            'Nie zmarnuj dnia!'
+        ],
+        [  # lvl 1: only >UNIMPORTANT & NON-URGENT< is not empty
+            'A może by tak dziś dla odmiany... cokolwiek zrobić?'
+        ],
+        [  # lvl 2: >URGENT< is not empty
+            "How about finally doing something? LV2"
+        ],
+        [  # lvl 3: - >IMPORTANT< is not empty
+            "How about finally doing something? LV3"
+        ],
+        [  # lvl 4: >IMPORTANT & URGENT< is not empty (!!!)
+            "OH GOD DO SOMETHING LV4 (!!!)",
+            "PO CO TYLE ZWLEKAŁEŚ ?!\nZARAZ DEADLINE!!!"
+        ]
+    ]
+
+    prefixesByLv = [
+        [  # lvl 0; there is nothing to do...
+            'ja wiem że nie ma nic do roboty... \n'
+            'ale nie wstyd Ci tak nic nie robić? :d'
+        ],
+        [  # lvl 1: only >UNIMPORTANT & NON-URGENT< is not empty
+            'hej a może by tak '
+        ],
+        [  # lvl 2: >URGENT< is not empty
+            'jak się nie pośpieszysz, to nie zdążysz '
+        ],
+        [  # lvl 3: - >IMPORTANT< is not empty
+            "WAŻNE! ZRÓB TERAZ, NIE PŁACZ PÓŹNIEJ!\n",
+            "PAMIĘTAJ, MUSISZ "
+        ],
+        [  # lvl 4: >IMPORTANT & URGENT< is not empty (!!!)
+            'SZYBKO!!! MUSISZ '
+        ]
+    ]
+
+    @staticmethod
+    def pick_header(intensity: int = 0):
+        if intensity not in [0, 1, 2, 3, 4]:
+            pr.err('header intensity lv incorrect! setting to lowest!')
+            return random.choice(TextGen.headersByLv[0])
+        return random.choice(TextGen.headersByLv[intensity])
+
+    @staticmethod
+    def pick_prefix(intensity: int = 0):
+        if intensity not in [0, 1, 2, 3, 4]:
+            pr.err('prefix intensity lv incorrect! setting to lowest!')
+            return random.choice(TextGen.prefixesByLv[0])
+        return random.choice(TextGen.prefixesByLv[intensity])
 
 
 class Notifier:
@@ -26,9 +83,12 @@ class Notifier:
                                 "Newline!",
                                 icon_path="icon.ico")
 
-    def notify(self, title: str = "Title", text: str = "Some short text."):
-        self.toaster.show_toast(title,
-                                text,
+    def notify(self,
+               task: str = "zjeść kebaba",
+               intensity: int = 0):
+        pr.okbl('Notification intensity: ' + str(intensity))
+        self.toaster.show_toast(TextGen.pick_header(intensity),
+                                TextGen.pick_prefix(intensity) + task,
                                 icon_path="icon.ico")
 
 
