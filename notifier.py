@@ -13,33 +13,32 @@ class TextGen:
             'A może by tak dziś dla odmiany... cokolwiek zrobić?'
         ],
         [  # lvl 2: >URGENT< is not empty
-            "How about finally doing something? LV2"
+            'Teraz albo nigdy!'
         ],
         [  # lvl 3: - >IMPORTANT< is not empty
-            "How about finally doing something? LV3"
+            'Sam stwierdziłeś że to ważne 🤷‍♀️'
         ],
         [  # lvl 4: >IMPORTANT & URGENT< is not empty (!!!)
-            "Niedługo DEADLINE !!!"
+            'Uuu... coś ważnego do zrobienia'
         ]
     ]
 
     prefixesByLv = [
         [  # lvl 0; there is nothing to do...
-            'ja wiem że nie ma nic do roboty... \n'
+            'ja wiem że nie ma nic do roboty... '
             'Może przynajmniej angielski powtórzysz?'
         ],
         [  # lvl 1: only >UNIMPORTANT & NON-URGENT< is not empty
-            'hej a może by tak '
+            'może by tak...  dla zabicia czasu...'
         ],
         [  # lvl 2: >URGENT< is not empty
-            'jak się nie pośpieszysz, to nie zdążysz '
+            'Dasz radę! 💪'
         ],
         [  # lvl 3: - >IMPORTANT< is not empty
-            "WAŻNE! ZRÓB TERAZ, NIE PŁACZ PÓŹNIEJ!\n",
-            "PAMIĘTAJ, MUSISZ "
+            'Willing is not enough. We must do. \n-Bruce Lee',
         ],
         [  # lvl 4: >IMPORTANT & URGENT< is not empty (!!!)
-            'SZYBKO!!!  '
+            'Ważne zadania same się nie zrobią! :D'
         ]
     ]
 
