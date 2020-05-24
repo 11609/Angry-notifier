@@ -13,12 +13,20 @@ def print_util(color, string: str):
     print(f'{color}{string}{BColors.ENDC}')
 
 
+def fail(string: str):
+    print_util(BColors.FAIL, string)
+
+
+def bold(string: str):
+    print_util(BColors.BOLD, string)
+
+
 def nice(string: str):
     print_util(BColors.HEADER, string)
 
 
 def err(string: str):
-    print_util(BColors.HEADER, string)
+    print_util(BColors.WARNING, string)
 
 
 def okbl(string: str):
