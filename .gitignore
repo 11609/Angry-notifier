@@ -4,3 +4,4 @@ venv/
 
 __pycache__/trelloagent.cpython-38.pyc
 __pycache__/notifier.cpython-38.pyc
+*.pyc
