@@ -1,5 +1,8 @@
 import os
+import random
+
 from trello import TrelloClient
+import print_util as pr
 
 
 # those are required for the connection to work
@@ -26,9 +29,11 @@ def demo():
     #     print(card.name)
 
 
-def search_boards(target: str = 'TODO'):
-    print("Scanning. Target board: " + target)
-    todo_board, = (boardname for boardname in client.list_boards() if boardname.name == 'TODO')
+def find_board(target: str = 'TODO'):
+    print('Scanning. Target board >' + target + '<')
+    todo_board = next((boardname for boardname in client.list_boards() if boardname.name == target), None)
+    if todo_board is None:
+        pr.err('ERROR: BOARD NOT FOUND')
     return todo_board
 
 
@@ -38,13 +43,14 @@ def print_board(board):
         print("---> " + lst.name)
         for card in lst.list_cards():
             print("-----> " + card.name)
+        if not lst.list_cards():
+            print("-----> (no cards)")
 
 
 def print_all_boards():
     all_boards = client.list_boards()
     for board in all_boards:
         print_board(board)
-
 
 
 def connect():
@@ -58,6 +64,27 @@ def connect():
     # print(last_board.name)
 
     return client
+
+
+def task():
+    todo_board = find_board()
+    # lists = todo_board.all_lists()
+    for lst in todo_board.all_lists():
+        # print("---> " + lst.name)
+        if lst.name == 'IMPORTANT & URGENT':
+            pr.okbl('found I&U list...')
+            task_list = lst.list_cards()
+            if task_list:
+                return random.choice(task_list), 4
+            else:
+                pr.err('  I&U is empty')
+
+
+        for card in lst.list_cards():
+            print("-----> " + card.name)
+        if not lst.list_cards():
+            print("-----> (no cards)")
+    return '', 0
 
 
 def boards():
