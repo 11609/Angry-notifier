@@ -22,7 +22,8 @@ class Notifier:
 
     def demo(self):
         self.toaster.show_toast("Hello World!!!",
-                                "Python is 10 seconds awsm!",
+                                "Python is 10 seconds awsm!\n"
+                                "Newline!",
                                 icon_path="icon.ico")
 
     def notify(self, title: str = "Title", text: str = "Some short text."):
