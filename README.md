@@ -33,5 +33,9 @@ You are not required to have, or use, all 4 of them. Eisenhower himself is said 
 
 I recommend using at least two.
 
+App will ignore boards other than those listed above.
+
+Use one Trello Card per task for best results!
+
 App will remind you about the tasks you have noted on Trello.
-IMPORTANT & URGENT has the highest priority. If it's empty, App will remind bout the IMPORTANT ones, and so long.
+IMPORTANT & URGENT has the highest priority. If it's empty, App will remind about the IMPORTANT ones, and so on.
