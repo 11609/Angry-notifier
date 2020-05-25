@@ -67,6 +67,15 @@ def connect():
     return client
 
 
+def coin_toss():
+    toss = random.choice((True, False, True, True))
+    if toss:
+        pr.okbl('Coin toss successful')
+    else:
+        pr.fail('Coin toss failed')
+    return toss
+
+
 def tasks():
     pr.nice('Looking for tasks')
     todo_board = find_board()
@@ -84,7 +93,8 @@ def tasks():
             task_list = lst.list_cards()
             if task_list:
                 task_names = [task.name for task in task_list]
-                return random.sample(task_names, min(3, len(task_list))), 4
+                if coin_toss():
+                    return random.sample(task_names, min(3, len(task_list))), 4
             else:
                 pr.fail('I&U is empty.')
 
@@ -93,7 +103,8 @@ def tasks():
             task_list = lst.list_cards()
             if task_list:
                 task_names = [task.name for task in task_list]
-                return random.sample(task_names, min(3, len(task_list))), 3
+                if coin_toss():
+                    return random.sample(task_names, min(3, len(task_list))), 3
             else:
                 pr.fail('IMPORTANT is empty.')
 
@@ -102,7 +113,8 @@ def tasks():
             task_list = lst.list_cards()
             if task_list:
                 task_names = [task.name for task in task_list]
-                return random.sample(task_names, min(3, len(task_list))), 2
+                if coin_toss():
+                    return random.sample(task_names, min(3, len(task_list))), 2
             else:
                 pr.fail('URGENT is empty.')
 
@@ -115,7 +127,7 @@ def tasks():
             else:
                 pr.fail('UI&N-U is empty.')
 
-    return '', 0
+    return ['Ej wiesz co, a gdyby tak pojechac w bieszczady?'], 0
 
 
 def boards():
