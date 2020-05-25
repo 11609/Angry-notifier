@@ -9,14 +9,19 @@ s = sched.scheduler(time.time, time.sleep)
 
 
 def main_loop(sc):
-    print("Doing stuff...")
+    pr.okgr("Reporting: main loop tick.")
     # do my stuff
 
     tasks, intensity = tr.tasks()
 
     ntf.notify(tasks=tasks, intensity=intensity)
 
-    s.enter(60, 1, main_loop, (sc,))
+    # Time between alerts should depend on task's intensity.
+    # If there is something important to do, notify more often.
+    timeout = 10 * 60 // (intensity + 1)  # time in seconds
+    pr.okgr("Timeout set to " + str(timeout) + 's.')
+
+    s.enter(timeout, 1, main_loop, (sc,))
 
 
 if __name__ == '__main__':
