@@ -24,7 +24,8 @@ class TextGen:
             'Teraz albo nigdy!'
         ],
         [  # lvl 3: - >IMPORTANT< is not empty
-            'Sam stwierdziłeś że to ważne 🤷‍♀️'
+            'Sam stwierdziłeś że to ważne 🤷‍♀️',
+            'Im szybciej odchaczysz, tym lepiej 😉'
         ],
         [  # lvl 4: >IMPORTANT & URGENT< is not empty (!!!)
             'Uuu... coś ważnego do zrobienia'
