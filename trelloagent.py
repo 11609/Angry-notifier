@@ -134,7 +134,7 @@ def boards():
     return client.list_boards()
 
 
-client = connect()
+client = None
 
 if __name__ == '__main__':
     connect()
