@@ -38,4 +38,4 @@ App will ignore boards other than those listed above.
 Use one Trello Card per task for best results!
 
 App will remind you about the tasks you have noted on Trello.
-IMPORTANT & URGENT has the highest priority. If it's empty, App will remind about the IMPORTANT ones, and so long.
+IMPORTANT & URGENT has the highest priority. If it's empty, App will remind about the IMPORTANT ones, and so on.
