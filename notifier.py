@@ -5,12 +5,14 @@ import random
 
 
 class TextGen:
+    arrows = ['➠', '→', '⇒', '⇝', '➔', '👉', '🤜']
+
     headersByLv = [
         [  # lvl 0; there is nothing to do...
             'Nie zmarnuj dnia!'
         ],
         [  # lvl 1: only >UNIMPORTANT & NON-URGENT< is not empty
-            'A może by tak dziś dla odmiany... cokolwiek zrobić?'
+            'A może by tak dziś... zrobić coś ciekawego?'
         ],
         [  # lvl 2: >URGENT< is not empty
             'Teraz albo nigdy!'
@@ -35,7 +37,7 @@ class TextGen:
             'Dasz radę! 💪'
         ],
         [  # lvl 3: - >IMPORTANT< is not empty
-            'Willing is not enough. We must do. \n-Bruce Lee',
+            'Willing is not enough. We must do. \n                                         -Bruce Lee',
         ],
         [  # lvl 4: >IMPORTANT & URGENT< is not empty (!!!)
             'Ważne zadania same się nie zrobią! :D'
@@ -85,8 +87,9 @@ class Notifier:
                tasks: str = "zjeść kebaba",
                intensity: int = 0):
         content = TextGen.pick_prefix(intensity)
+        arrow = random.choice(TextGen.arrows)
         for t in tasks:
-            content += '\n-> ' + t
+            content += '\n' + arrow + ' ' + t
         pr.okbl('Notification intensity: ' + str(intensity))
         self.toaster.show_toast(TextGen.pick_header(intensity),
                                 content,
