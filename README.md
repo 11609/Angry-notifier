@@ -1,5 +1,8 @@
 # Angry-notifier
-Requirements:
+![Alt Text](https://github.com/11609/Angry-notifier/blob/master/demo/demo.gif)
+
+
+### Requirements:
 ```
 py-trello win10toast
 ```
