@@ -4,7 +4,7 @@
 
 ### Requirements:
 ```
-py-trello win10toast
+pip install py-trello win10toast
 ```
 
 To run, two environment variables must be set:
@@ -17,7 +17,12 @@ You can learn about how to obtain those here: https://trello.com/app-key
 
 If not set, App will simply prompt you for those :)
 
-## Trello setup
+### Launch
+
+    cd Angry-notifier
+    py .controller.py
+
+### Trello setup
 
 You need to have a Trello Board named "TODO".
 
@@ -41,4 +46,4 @@ App will ignore boards other than those listed above.
 Use one Trello Card per task for best results!
 
 App will remind you about the tasks you have noted on Trello.
-IMPORTANT & URGENT has the highest priority. If it's empty, App will remind about the IMPORTANT ones, and so on.
+IMPORTANT & URGENT has the highest priority.
