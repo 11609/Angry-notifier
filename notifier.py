@@ -4,17 +4,23 @@ import print_util as pr
 import random
 
 
+# ta klasa jest przykładem wzorca projektowego - SINGLETONU
+# ponieważ interesuje nas tylko jej działanie
+# nie ma potrzeby jej instancjować
 class TextGen:
     arrows = ['➠', '→', '⇒', '⇝', '➔', '👉', '🤜']
 
     headersByLv = [
         [  # lvl 0; there is nothing to do...
-            'Nie zmarnuj dnia!'
+            'Nie zmarnuj dnia!',
+            'Szukasz inspiracji? A może...'
         ],
         [  # lvl 1: only >UNIMPORTANT & NON-URGENT< is not empty
-            'A może by tak dziś... zrobić coś ciekawego?'
+            'A może by tak dziś... zrobić coś ciekawego?',
+            'Nic pilnego... jakieś pomysły na dziś?'
         ],
         [  # lvl 2: >URGENT< is not empty
+            'Pilne, ale czy ważne?',
             'Teraz albo nigdy!'
         ],
         [  # lvl 3: - >IMPORTANT< is not empty
@@ -27,20 +33,24 @@ class TextGen:
 
     prefixesByLv = [
         [  # lvl 0; there is nothing to do...
-            'ja wiem że nie ma nic do roboty... '
-            'Może przynajmniej angielski powtórzysz?'
+            'Może przynajmniej angielski powtórzysz?',
+            'Powtórzymy angielski?'
         ],
         [  # lvl 1: only >UNIMPORTANT & NON-URGENT< is not empty
-            'może by tak...  dla zabicia czasu...'
+            'Może by tak...  dla zabicia czasu...',
+            'A gdyby tak w spróbować...'
         ],
         [  # lvl 2: >URGENT< is not empty
             'Dasz radę! 💪'
         ],
         [  # lvl 3: - >IMPORTANT< is not empty
-            'Willing is not enough. We must do. \n                                         -Bruce Lee',
+            'Do it now, party later!',
+            'Nothing worth doing is easy!',
+            'Willing is not enough. We must do. -Bruce Lee'
         ],
         [  # lvl 4: >IMPORTANT & URGENT< is not empty (!!!)
-            'Ważne zadania same się nie zrobią! :D'
+            'To nie zające, same się nie zrobią! :D',
+            'No dawaj, zrób to dziś! 😏'
         ]
     ]
 
