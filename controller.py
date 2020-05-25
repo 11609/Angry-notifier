@@ -18,8 +18,8 @@ def main_loop(sc):
 
     # Time between alerts should depend on task's intensity.
     # If there is something important to do, notify more often.
-    timeout = 10 * 60 // (intensity + 1)  # time in seconds
-    pr.okgr("Timeout set to " + str(timeout) + 's.')
+    timeout = 4 * 60 * 60 // ((intensity + 1) ** 2)  # time in seconds
+    pr.okgr("Timeout set to " + str(timeout / 60) + ' min.')
 
     s.enter(timeout, 1, main_loop, (sc,))
 
