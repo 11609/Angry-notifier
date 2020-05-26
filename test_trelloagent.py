@@ -21,6 +21,8 @@ class TestTrelloAgent(unittest.TestCase):
 
     def test_update(self):
         """test the ability to get update on trello board data"""
+        lst = trelloagent.client.list_boards()
+        self.assertTrue(lst)  # empty list would evaluate to false
         pass
 
     def test_getTodoBoard(self):
