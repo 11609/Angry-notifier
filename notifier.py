@@ -95,7 +95,7 @@ class Notifier:
                                 icon_path="icon.ico")
 
     def notify(self,
-               tasks: str = "zjeść kebaba",
+               tasks: list = ('zjeść kebaba', 'uczyć się'),
                intensity: int = 0):
         content = TextGen.pick_prefix(intensity)
         arrow = random.choice(TextGen.arrows)

@@ -20,27 +20,20 @@ class TestNotifier(unittest.TestCase):
     def tearDownClass(cls):
         pass
 
-    def  test_notify(self):
+    def test_textGen(self):
+        for intensity in range(0, 5):
+            text = notifier.TextGen.pick_prefix(intensity)
+            self.assertNotEqual(text, '')
+
+        text = notifier.TextGen.pick_prefix(6)  # this may comment on correcting the argument
+        self.assertNotEqual(text, '')
+
+    def test_notify(self):
         """Test if notification is being displayed"""
-        pass
-
-    def test_composeReminder(self):
-        """should compose arbitrary reminder"""
-        pass
-
-    def test_displayReminder(self):
-        """should display arbitrary reminder"""
-        pass
-
-    def test_composePraise(self):
-        """should compose arbitrary praise
-        subprocess of displlayPraise"""
-        pass
-
-    def test_displayPraise(self):
-        """should display arbitrary praise
-        composePraise is it's subprocess"""
-        pass
+        displayed = notifier.agent.notify()
+        self.assertIsNone(displayed)
+        displayed = notifier.agent.notify(['test1', 'test2', 'test3', 'test4'])
+        self.assertIsNone(displayed)
 
 
 if __name__ == '__main__':
