@@ -17,10 +17,10 @@ You can learn about how to obtain those here: https://trello.com/app-key
 
 If not set, App will simply prompt you for those :)
 
-### Launch
+### Launching
 
-    cd Angry-notifier
-    py .controller.py
+    $ cd /path/to/project/Angry-notifier
+    $ py .controller.py
 
 ### Trello setup
 
